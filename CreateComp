@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Extracting deb file..."
+curl -O http://apt.saurik.com/cydia/debs/com.saurik.afc2d_1.2_iphoneos-arm.deb
+ar x com.saurik.afc2d_1.2_iphoneos-arm.deb
+tar xf data.tar.gz
+echo "Done"
+echo " "
+echo "Signing to afc2d..."
+cat << EOS > ent.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>platform-application</key>
+        <true/>
+    </dict>
+</plist>
+EOS
+brew install ldid
+ldid -Sent.plist afc2d
+echo "All Done"
