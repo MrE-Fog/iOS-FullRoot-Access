@@ -1,0 +1,12 @@
+#!/bin/bash
+
+OPENSSL_ROOT_DIR=/usr/local/opt/openssl
+OPENSSL_LIBRARIES=/usr/local/opt/openssl/lib
+export PATH=bin:$PATH
+
+echo "Start installing dmg command ..."
+git clone https://github.com/planetbeing/xpwn
+pushd xpwn &> /dev/null
+cmake -DOPENSSL_ROOT_DIR=$OPENSSL_ROOT_DIR -DOPENSSL_LIBRARIES=$OPENSSL_LIBRARIES .
+make &> /dev/null
+popd &> /dev/null

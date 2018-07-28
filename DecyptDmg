@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Downloading firmware and decrypting dmg file..."
+curl -O "http://appldnld.apple.com/iOS7/031-3045.20140221.8j5GW/iPhone6,1_7.0.6_11B651_Restore.ipsw"
+unzip -j iPhone6,1_7.0.6_11B651_Restore.ipsw 058-2384-003.dmg
+rm iPhone6,1_7.0.6_11B651_Restore.ipsw
+./dmg extract 058-2384-003.dmg rootfs.dmg -k a0d2c1d5ce091c62dcf28f1ac953e58a6a66c112184d125e177a1285b7e991262e3c5917
